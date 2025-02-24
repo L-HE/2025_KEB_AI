@@ -1,11 +1,23 @@
 import  numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 
-df = pd.DataFrame(
-    {"a" : [4, 5, 6],
-            "b" : [7, 8, 9],
-            "c" : [10, 11, 12]}, index = [1, 2, 3])
+ls = pd.read_csv("https://github.com/ageron/data/raw/main/lifesat/lifesat.csv")
+#print(type(ls))
+
+X = ls[["GDP per capita (USD)"]].values
+y = ls[["Life satisfaction"]].values
+# print(X)
+
+ls.plot(kind='scatter', grid= True, x = "GDP per capita (USD)", y = "Life satisfaction")
+plt.axis([23500, 62500, 4, 9])
+plt.show()
 
 
+model = LinearRegression()
 
-print(df)
+model.fit(X, y)
+
+X_new = [[37_655.2]]
+print(model.predict(X_new))

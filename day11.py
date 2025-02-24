@@ -1,7 +1,7 @@
-import  numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
+#from sklearn.linear_model import LinearRegression
+from helearn import LinearRegression
 
 ls = pd.read_csv("https://github.com/ageron/data/raw/main/lifesat/lifesat.csv")
 #print(type(ls))

@@ -1,10 +1,9 @@
 # Assignment
-# v0.8) v0.7의 결측치 값을 산술평균으로 채워 넣는 다양한 방법을 적용하시오.
-from statistics import median
+# v0.9) v0.8의 사이킷런 라이브러리를 주석처리하고 결측치를 산술평균으로 채워 넣으시오.
 
 import numpy as np
 import pandas as pd
-from sklearn.impute import SimpleImputer
+# from sklearn.impute import SimpleImputer
 
 df = pd.DataFrame(
     {
@@ -16,11 +15,7 @@ df = pd.DataFrame(
 
 print(df)
 
-# #옵션3
-# median = df.median()
-# df.fillna(median, inplace=True)
-# print(df)
 
-imputer = SimpleImputer(strategy="mean")
-df[['A', 'B']] = imputer.fit_transform(df[['A', 'B']])
+mean = df.mean()
+df.fillna(value=mean, inplace=True)
 print(df)

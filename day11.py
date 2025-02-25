@@ -11,13 +11,11 @@ X = ls[["GDP per capita (USD)"]].values
 y = ls[["Life satisfaction"]].values
 X_new = [[37_655.2]]
 
-
 ls.plot(kind='scatter', grid= True, x = "GDP per capita (USD)", y = "Life satisfaction")
 plt.axis([23500, 62500, 4, 9])
 plt.show()
 
-
 model = KNeighborsRegressor(n_neighbors=3)
 model.fit(X, y, X_new)
 
-print(model.predict())
+print(f"Result of KNeighbors: {model.predict()}")

@@ -1,5 +1,6 @@
 # Assignment
-# v0.7 결측치 있는 dataframe
+# v0.8) v0.7의 결측치 값을 산술평균으로 채워 넣는 다양한 방법을 적용하시오.
+from statistics import median
 
 import numpy as np
 import pandas as pd
@@ -13,4 +14,13 @@ df = pd.DataFrame(
     }
 )
 
+print(df)
+
+# #옵션3
+# median = df.median()
+# df.fillna(median, inplace=True)
+# print(df)
+
+imputer = SimpleImputer(strategy="mean")
+df[['A', 'B']] = imputer.fit_transform(df[['A', 'B']])
 print(df)

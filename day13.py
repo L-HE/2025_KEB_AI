@@ -1,28 +1,19 @@
-class Pokemon:
-    def __init__(self, name):
-        self.name = name
+# Assignment
+# 데이터 로딩 -> 데이터 전처리 -> 타겟 및 독립변수 설정 -> 트레이닝 / 테스트 셋 설정
+# -> 모델 선택 및 학습 -> 예측 수행 -> 성능 평가(mse등) -> 시각화
 
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.impute import SimpleImputer
+# from sklearn.linear_model import LinearRegression
+# from sklearn.metrics import mean_squared_error, r2_score
 
-    def walks(self):
-        print("Walk..")
+mpg = sns.load_dataset('mpg')
 
-    # java에서는 target_pokemon은 같은 Pokemon type으로 받는 곳이므로
-    # 오류가 난다.
-    # python에서는 그냥 적용됨. type checking을 안해서.
-    def attack(self, target_pokemon):
-        print(f"{self.name}Attack {target_pokemon.name}!")
+train_set = train_test_split(mpg, test_size=0.2, random_state=42)
 
+# mpg.hist(bins=50, figsize=(12, 8))
+# plt.show()
 
-#상속받을 땐 괄호 안에 부모 클래스
-class Pikachu(Pokemon):
-    pass
-
-
-class Agumon:
-    def __init__(self, name):
-        self.name = name
-
-
-agumon = Agumon('아구몬')
-pikachu = Pikachu('피카츄')
-pikachu.attack(agumon)
